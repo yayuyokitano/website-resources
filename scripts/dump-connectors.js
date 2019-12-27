@@ -5,6 +5,7 @@ const fs = require('fs');
 const util = require('util');
 const fetch = require('node-fetch');
 
+const mkdir = util.promisify(fs.mkdir);
 const writeFile = util.promisify(fs.writeFile);
 const removeFile = util.promisify(fs.unlink);
 
@@ -13,8 +14,9 @@ const repo = 'web-scrobbler';
 const rawContentUrl = `https://raw.githubusercontent.com/${owner}/${repo}`;
 
 const rootDir = '..';
+const resDir = 'resources';
 const moduleFile = 'connectors.js';
-const listFile = 'resources/connectors.json';
+const listFile = `${resDir}/connectors.json`;
 
 async function main(args) {
 	const latestTag = args[2];
@@ -51,6 +53,10 @@ async function dumpConnectors() {
 
 	const labelArray = connectors.map((entry) => entry.label);
 	const contents = JSON.stringify(labelArray, null, 2);
+    
+    if (!fs.existsSync(resDir)) {
+        mkdir(resDir);
+    }    
 
 	await writeFile(listFile, contents);
 	await removeFile(moduleFile);
