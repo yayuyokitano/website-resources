@@ -2,7 +2,7 @@ This repository contains:
 - resources (a list of websites) for Web Scrobbler [website][website]
 - a script file and other environment files that generate resources
 
-This repository updates automatically. Please don't sibmit pull requests here.
+This repository is updated automatically. Please don't sibmit pull requests here.
 
 If you find an issue, or have a question, feel free to create a new issue:
 - [in the extension repository][extension-issues], if it's related to the extension
