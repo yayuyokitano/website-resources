@@ -76,6 +76,7 @@
   "RMFON",
   "RADIO Обозреватель",
   "JazzRadio",
+  "Zen Radio",
   "SomaFM",
   "Free Music Archive",
   "Reddit Music Player",
@@ -113,7 +114,7 @@
   "JioSaavn",
   "Anghami",
   "Mail.ru Music",
-  "Emby",
+  "Emby/Jellyfin",
   "Freegal",
   "Monstercat",
   "Randomtube",
@@ -140,6 +141,7 @@
   "olleh",
   "mnet",
   "Soribada",
+  "Flo",
   "GrooveMP3",
   "ytmp3",
   "Discogs",
@@ -221,5 +223,11 @@
   "Atomic Music Space",
   "The-radio.ru",
   "HQ Radio",
-  "Smooth FM"
+  "Smooth FM",
+  "Relisten.net",
+  "UpBeatRadio",
+  "Chillhop",
+  "DatPiff",
+  "Shuffle",
+  "SECTOR Radio"
 ]
