@@ -19,7 +19,6 @@
   "Tuba.FM",
   "Spotify",
   "plug.dj",
-  "Slacker",
   "Dandelion Radio",
   "HillyDilly",
   "Groove Music",
@@ -61,7 +60,7 @@
   "Imusic.am",
   "Earbits",
   "Player.fm",
-  "SNDTST",
+  "Sound Test",
   "RadioTunes",
   "RockRadio",
   "ClassicalRadio",
@@ -229,5 +228,7 @@
   "Chillhop",
   "DatPiff",
   "Shuffle",
-  "SECTOR Radio"
+  "SECTOR Radio",
+  "LiveXLive",
+  "PocketCasts"
 ]
