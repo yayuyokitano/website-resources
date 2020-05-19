@@ -26,4 +26,4 @@ jobs:
           Update resources
 
           Update connectors.json to match ${{ github.event.action }} version.
-        github-token: ${{ secrets.GH_FA_TOKEN }}
+        github-token: ${{ secrets.GITHUB_TOKEN }}
