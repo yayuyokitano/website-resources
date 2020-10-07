@@ -59,9 +59,9 @@ async function dumpConnectors() {
 	const labelArray = connectors.map((entry) => entry.label);
 	const contents = JSON.stringify(labelArray, null, 2);
 
-    if (!fs.existsSync(resDir)) {
-        mkdir(resDir);
-    }
+	if (!fs.existsSync(resDir)) {
+		mkdir(resDir);
+	}
 
 	await writeFile(listFile, contents);
 	await removeFile(moduleFile);
