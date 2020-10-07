@@ -7,10 +7,10 @@ jobs:
     env:
       VERSION: ${{ github.event.action }}
     steps:
+    - uses: actions/checkout@v2
     - name: Read .nvmrc
       run: echo ::set-output name=nvmrc::$(cat .nvmrc)
       id: nvm
-    - uses: actions/checkout@v2
     - uses: actions/setup-node@v1
       with:
         node-version: '${{ steps.nvm.outputs.nvmrc }}'

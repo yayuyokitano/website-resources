@@ -20,10 +20,15 @@ const listFile = `${resDir}/connectors.json`;
 
 async function main(args) {
 	const latestTag = args[2];
-	let exitCode = 0;
 
+	if (!latestTag) {
+		console.error('You must provide version as an argument')
+		process.exit(1);
+	}
+
+	let exitCode = 0;
 	try {
-		await dowloadModule(latestTag);
+		await downloadModule(latestTag);
 		await dumpConnectors();
 
 		console.log(`Dumped connectors from ${latestTag} release.`);
@@ -36,7 +41,7 @@ async function main(args) {
 	process.exit(exitCode);
 }
 
-async function dowloadModule(tagName) {
+async function downloadModule(tagName) {
 	const moduleUrl = getModuleUrl(tagName);
 
 	const response = await fetch(moduleUrl);
