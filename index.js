@@ -13,7 +13,6 @@ const owner = 'web-scrobbler';
 const repo = 'web-scrobbler';
 const rawContentUrl = `https://raw.githubusercontent.com/${owner}/${repo}`;
 
-const rootDir = '..';
 const resDir = 'resources';
 const moduleFile = 'connectors.js';
 const listFile = `${resDir}/connectors.json`;
@@ -34,6 +33,7 @@ async function main(args) {
 		console.log(`Dumped connectors from ${latestTag} release.`);
 	} catch (e) {
 		console.error(`Unable to dump connectors from ${latestTag} release.`);
+		console.log(e);
 
 		exitCode = 1;
 	}
@@ -54,7 +54,7 @@ async function downloadModule(tagName) {
 }
 
 async function dumpConnectors() {
-	const connectors = require(`${rootDir}/${moduleFile}`);
+	const connectors = require(`./${moduleFile}`);
 
 	const labelArray = connectors.map((entry) => entry.label);
 	const contents = JSON.stringify(labelArray, null, 2);
