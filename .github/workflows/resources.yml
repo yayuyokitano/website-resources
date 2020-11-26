@@ -7,17 +7,24 @@ jobs:
     env:
       VERSION: ${{ github.event.action }}
     steps:
-      - uses: actions/checkout@v2
-      - name: Read .nvmrc
-        run: echo ::set-output name=nvmrc::$(cat .nvmrc)
-        id: nvm
-      - uses: actions/setup-node@v1
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+
+      - name: Get Node.js version from .nvmrc
+        id: get-node-version
+        run: echo ::set-output name=NODE_VERSION::$(cat .nvmrc)
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
         with:
-          node-version: "${{ steps.nvm.outputs.nvmrc }}"
+          node-version: "${{ steps.get-node-version.outputs.NODE_VERSION }}"
+
       - name: Install dependencies
         run: npm install
+
       - name: Fetch resources
         run: node ./index.js $VERSION
+
       - name: Update resources
         uses: test-room-7/action-update-file@v1
         with:
