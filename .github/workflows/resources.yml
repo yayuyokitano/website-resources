@@ -7,23 +7,23 @@ jobs:
     env:
       VERSION: ${{ github.event.action }}
     steps:
-    - uses: actions/checkout@v2
-    - name: Read .nvmrc
-      run: echo ::set-output name=nvmrc::$(cat .nvmrc)
-      id: nvm
-    - uses: actions/setup-node@v1
-      with:
-        node-version: '${{ steps.nvm.outputs.nvmrc }}'
-    - name: Install dependencies
-      run: npm install
-    - name: Fetch resources
-      run: node scripts/dump-connectors.js $VERSION
-    - name: Update resources
-      uses: test-room-7/action-update-file@v1
-      with:
-        file-path: resources/connectors.json
-        commit-msg: |
-          Update resources
+      - uses: actions/checkout@v2
+      - name: Read .nvmrc
+        run: echo ::set-output name=nvmrc::$(cat .nvmrc)
+        id: nvm
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "${{ steps.nvm.outputs.nvmrc }}"
+      - name: Install dependencies
+        run: npm install
+      - name: Fetch resources
+        run: node ./index.js $VERSION
+      - name: Update resources
+        uses: test-room-7/action-update-file@v1
+        with:
+          file-path: resources/connectors.json
+          commit-msg: |
+            Update resources
 
-          Update connectors.json to match ${{ github.event.action }} version.
-        github-token: ${{ secrets.GITHUB_TOKEN }}
+            Update connectors.json to match ${{ github.event.action }} version.
+          github-token: ${{ secrets.GITHUB_TOKEN }}
