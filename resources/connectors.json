@@ -181,6 +181,7 @@
   "YouTube Music",
   "Radiozenders.FM",
   "Invidious",
+  "Piped",
   "Pretzel",
   "Radio Kyivstar",
   "Funkwhale",
@@ -324,5 +325,7 @@
   "LightningStream",
   "Securenet Systems",
   "WBRU",
-  "uwu radio"
+  "uwu radio",
+  "MyStreamPlayer",
+  "BagelRadio"
 ]
