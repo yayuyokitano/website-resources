@@ -1,9 +1,8 @@
 'use strict';
 
-require('node-define');
-const fs = require('fs');
-const util = require('util');
-const fetch = require('node-fetch');
+import fs from 'fs';
+import util from 'util';
+import fetch from 'node-fetch';
 
 const mkdir = util.promisify(fs.mkdir);
 const writeFile = util.promisify(fs.writeFile);
@@ -14,11 +13,11 @@ const repo = 'web-scrobbler';
 const rawContentUrl = `https://raw.githubusercontent.com/${owner}/${repo}`;
 
 const resDir = 'resources';
-const moduleFile = 'connectors.js';
+const moduleFile = 'connectors.ts';
 const listFile = `${resDir}/connectors.json`;
 
-async function main(args) {
-	const latestTag = args[2];
+async function main(args:string[]) {
+	const latestTag = args.at(-1);
 
 	if (!latestTag) {
 		console.error('You must provide version as an argument')
@@ -54,7 +53,7 @@ async function downloadModule(tagName) {
 }
 
 async function dumpConnectors() {
-	const connectors = require(`./${moduleFile}`);
+	const connectors = (await import(`./${moduleFile}`)).default as any[];
 
 	const labelArray = connectors.map((entry) => entry.label);
 	const contents = JSON.stringify(labelArray, null, 2);
@@ -68,7 +67,7 @@ async function dumpConnectors() {
 }
 
 function getModuleUrl(tagName) {
-	return `${rawContentUrl}/${tagName}/src/core/connectors.js`;
+	return `${rawContentUrl}/${tagName}/src/core/connectors.ts`;
 }
 
 main(process.argv);

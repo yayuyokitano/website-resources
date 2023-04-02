@@ -23,7 +23,7 @@ jobs:
         run: npm install
 
       - name: Fetch resources
-        run: node ./index.js $VERSION
+        run: npx tsx ./index.ts $VERSION
 
       - name: Update resources
         uses: test-room-7/action-update-file@v1
